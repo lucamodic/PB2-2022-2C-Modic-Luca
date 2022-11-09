@@ -1,0 +1,9 @@
+package unlam.edu.ar.pb2;
+
+public class Acivador extends Usuario {
+
+	public Acivador(Integer dni, String nombre) {
+		super(dni, nombre);
+	}
+
+}

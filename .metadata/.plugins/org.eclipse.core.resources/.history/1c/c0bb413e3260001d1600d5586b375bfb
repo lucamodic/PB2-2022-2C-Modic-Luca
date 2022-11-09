@@ -1,0 +1,13 @@
+package unlam.edu.ar.pb2;
+
+public class Activador extends Usuario {
+
+	public Activador(Integer dni, String nombre) {
+		super(dni, nombre);
+	}
+
+	public Boolean activarDesactivarAlarma(Alarma alarma, String codigoActivacion, Central central) {
+		return true;
+	}
+
+}

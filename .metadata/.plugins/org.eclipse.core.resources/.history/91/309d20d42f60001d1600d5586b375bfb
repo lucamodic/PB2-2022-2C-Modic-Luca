@@ -1,0 +1,21 @@
+package unlam.edu.ar.pb2;
+
+import java.util.ArrayList;
+
+public class Configurador extends Usuario implements Configurable{
+
+	public Configurador(Integer dni, String nombre) {
+		super(dni, nombre);
+	}
+
+	public Boolean activarDesactivarAlarma(Alarma alarma, String codigoActivacion, Central central) {
+		if(alarma.getCodigoDeActivacion().equals(codigoActivacion)){
+			for(Sensor sensor : alarma.getSensores()){
+				sensor.setEstado(!sensor.getEstado());
+				return true;
+			}
+		}
+		return false;
+	}
+
+}

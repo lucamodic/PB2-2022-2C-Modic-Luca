@@ -1,0 +1,59 @@
+package unlam.edu.ar.pb2;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestingParcial {
+
+	@Test
+	public void queSePuedaRegistrarUnaAlarmaEnlaCentral() {
+		Central central = new Central ("Central");
+		Integer id = 1;
+		Alarma alarma = new Alarma(id, "COD123", "COD321", "Alamrma Master 1");
+		Administrador administrador = new Administrador(44851732, "Luca");
+		administrador.agregarAlarma(alarma, central);
+		assertEquals(1, central.getAlarmasRegistradas().size());
+	}
+	
+	@Test
+	public void queSePuedaAgregarUnUsuarioConfiguradorAUnaAlarma() throws AlarmaNoRegistrada, UsuarioNoRegistrado, CodigoAlarmaIncorrectoException{
+		Central central = new Central ("Central");
+		Integer id = 1;
+		Configurador configurador = new Configurador(44851732, "Luca");
+		Administrador administrador = new Administrador(44851733, "Mateo");
+		Alarma alarma = new Alarma(id, "COD123", "COD123", "Alamrma Master 1");
+		administrador.agregarUsuario(configurador, central);
+		administrador.agregarAlarma(alarma, central);
+		administrador.agregarUsuarioAUnaAlarma(44851732, 1, "COD123", central);
+		assertEquals(1, alarma.getUsuariosValidos().size());
+	}
+	
+	@Test (expected = CodigoAlarmaIncorrectoException.class)
+	public void alAgregarUnUsuarioAUnaAlarmaConCodigoDeAlarmaInvalidoSeLanceCodigoAlarmaIncorrectoException() throws AlarmaNoRegistrada, UsuarioNoRegistrado, CodigoAlarmaIncorrectoException{
+		Central central = new Central ("Central");
+		Integer id = 1;
+		Configurador configurador = new Configurador(44851732, "Luca");
+		Administrador administrador = new Administrador(44851733, "Mateo");
+		Alarma alarma = new Alarma(id, "COD123", "COD123", "Alamrma Master 1");
+		administrador.agregarUsuario(configurador, central);
+		administrador.agregarAlarma(alarma, central);
+		administrador.agregarUsuarioAUnaAlarma(44851732, 1, "COD122", central);
+		assertEquals(0, alarma.getUsuariosValidos().size());	
+	}
+	
+	@Test
+	public void alAgregarUnSensorDuplicadoEnUnaAlarmaSeLanceSensorDuplicadoException() throws AlarmaNoRegistrada, CodigoAlarmaIncorrectoException, UsuarioNoRegistrado{
+		Central central = new Central ("Central");
+		Integer id = 1;
+		Administrador administrador = new Administrador(44851733, "Mateo");
+		Configurador configurador = new Configurador(44851732, "Luca");
+		Alarma alarma = new Alarma(id, "COD123", "COD123", "Alamrma Master 1");
+		administrador.agregarAlarma(alarma, central);
+		administrador.agregarUsuarioAUnaAlarma(44851732, 1, "COD123", central);
+		Sensor sensor = new Sensor(1, true);
+		administrador.agregarSensorALaAlarma(1, sensor, "COD123", 44851732, central);
+		assertEquals(1, alarma.getSensores().size());
+
+	}
+
+}

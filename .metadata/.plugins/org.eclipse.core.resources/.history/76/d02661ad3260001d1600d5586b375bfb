@@ -1,0 +1,28 @@
+package unlam.edu.ar.pb2;
+
+public class Activador extends Usuario {
+
+	public Activador(Integer dni, String nombre) {
+		super(dni, nombre);
+	}
+
+	public Boolean activarDesactivarAlarma(Alarma alarma, String codigoActivacion, Central central) {
+		
+		for(Alarma alarma2 : central.getAlarmasRegistradas()){
+			
+			if(alarma2.equals(alarma)){
+				if(alarma.getCodigoDeActivacion().equals(codigoActivacion)){
+					for(Sensor sensor : alarma.getSensores()){
+						if(!sensor.getEstado()){
+							return false;
+						}
+					}
+					return false;
+				}
+			}
+			
+		}
+		
+	}
+
+}

@@ -1,0 +1,27 @@
+package unlam.edu.ar.pb2;
+
+import java.util.ArrayList;
+
+public class Configurador extends Usuario implements Configurable{
+
+	public Configurador(Integer dni, String nombre) {
+		super(dni, nombre);
+	}
+
+	public Boolean activarDesactivarSensor(int idSensor, int idAlarma, String codigoConfiguracion, Central central) throws AlarmaNoRegistrada, CodigoAlarmaIncorrectoException, UsuarioNoRegistrado  {
+	
+		if(central.retornarAlarma(idAlarma, codigoConfiguracion).getCodigoDeActivacion().equals(codigoConfiguracion)){
+			for(Sensor sensor : central.retornarAlarma(idAlarma, codigoConfiguracion).getSensores()){
+				Usuario usuario = central.retornarUsuario(this.getDni());
+				Accion accion = new Accion(1, central.retornarAlarma(idAlarma, codigoConfiguracion), usuario, "2020-12-12", TipoDeOperacion.ACTIVACION);
+				central.retornarAlarma(idAlarma, codigoConfiguracion).getAcciones().add(accion);
+				central.retornarAlarma(idAlarma, codigoConfiguracion).getAccionesRealizadas().add(accion);
+				sensor.setEstado(!sensor.getEstado());
+				return true;
+			}
+		}
+		return false;
+		
+	}
+
+}

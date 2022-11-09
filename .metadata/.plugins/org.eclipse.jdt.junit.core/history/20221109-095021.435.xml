@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestingParcial" project="PB2-2022-2C-Modic-Luca" tests="4" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="unlam.edu.ar.pb2.TestingParcial" incomplete="true">
+    <testcase name="queSePuedaAgregarUnUsuarioConfiguradorAUnaAlarma" classname="unlam.edu.ar.pb2.TestingParcial" time="0.0"/>
+    <testcase name="alAgregarUnUsuarioAUnaAlarmaConCodigoDeAlarmaInvalidoSeLanceCodigoAlarmaIncorrectoException" classname="unlam.edu.ar.pb2.TestingParcial" time="0.0"/>
+    <testcase name="alAgregarUnSensorDuplicadoEnUnaAlarmaSeLanceSensorDuplicadoException" classname="unlam.edu.ar.pb2.TestingParcial" incomplete="true"/>
+    <testcase name="queSePuedaRegistrarUnaAlarmaEnlaCentral" classname="unlam.edu.ar.pb2.TestingParcial" incomplete="true"/>
+  </testsuite>
+</testrun>

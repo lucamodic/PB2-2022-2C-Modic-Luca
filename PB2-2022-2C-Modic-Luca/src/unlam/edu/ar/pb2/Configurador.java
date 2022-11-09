@@ -8,9 +8,18 @@ public class Configurador extends Usuario implements Configurable{
 		super(dni, nombre);
 	}
 
-	public void agregarUsuarioAUnaAlarma(int dniUsuarioAAgregar, int idAlarma, String codigoConfiguracionAlarma) {
-		
-		
+	public Boolean activarDesactivarSensor(int idSensor, int idAlarma, String codigoConfiguracion, Central central) throws AlarmaNoRegistrada, CodigoAlarmaIncorrectoException, UsuarioNoRegistrado  {
+		if(central.retornarAlarma(idAlarma, codigoConfiguracion).getCodigoDeActivacion().equals(codigoConfiguracion)){
+			for(Sensor sensor : central.retornarAlarma(idAlarma, codigoConfiguracion).getSensores()){
+				Usuario usuario = central.retornarUsuario(this.getDni());
+				Accion accion = new Accion(1, central.retornarAlarma(idAlarma, codigoConfiguracion), usuario, "2020-12-12", TipoDeOperacion.ACTIVACION);
+				central.retornarAlarma(idAlarma, codigoConfiguracion).getAcciones().add(accion);
+				central.retornarAlarma(idAlarma, codigoConfiguracion).getAccionesRealizadas().add(accion);
+				sensor.setEstado(!sensor.getEstado());
+				return true;
+			}
+		}
+		return false;
 		
 	}
 
