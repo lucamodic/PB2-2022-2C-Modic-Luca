@@ -1,0 +1,23 @@
+import java.util.TreeSet;
+
+public class Alarma {
+
+	
+	TreeSet <Usuario> usuariosValidos;
+	TreeSet <Accion> acciones;
+	Integer id;
+	String codigoDeActivacion;
+	String codigoDeConfiguracion;
+	String nombre;
+
+	public Alarma(Integer id, String codigoDeActivacion, String codigoDeConfiguracion, String nombre) {
+		this.id = id;
+		this.codigoDeActivacion = codigoDeActivacion;
+		this.codigoDeConfiguracion = codigoDeConfiguracion;
+		this.nombre = nombre;
+		this.usuariosValidos =  new TreeSet <Usuario>();
+	}
+
+	
+	
+}

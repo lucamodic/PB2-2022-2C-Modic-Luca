@@ -1,0 +1,9 @@
+
+public class Accion {
+
+	private Integer id;
+	private Alarma alarmaQueUsa;
+	private Usuario usuarioQueUsa;
+	private String fecha;
+	private TipoDeOperacion operacion;
+}
