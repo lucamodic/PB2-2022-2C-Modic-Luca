@@ -1,0 +1,11 @@
+package unlam.edu.ar.pb2;
+
+import java.util.ArrayList;
+
+public class Configurador extends Usuario implements Configurable{
+
+	public Configurador(int i, String string) {
+		super(dni, nombre);
+	}
+
+}

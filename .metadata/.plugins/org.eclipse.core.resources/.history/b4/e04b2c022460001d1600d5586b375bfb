@@ -1,0 +1,14 @@
+package unlam.edu.ar.pb2;
+
+import java.util.TreeSet;
+
+public class Central {
+
+	private TreeSet<Alarma> alarmasRegistradas;
+
+	public Central() {
+		this.alarmasRegistradas = new TreeSet<Alarma>();
+	}
+	
+	
+}

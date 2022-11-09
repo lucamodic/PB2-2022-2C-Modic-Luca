@@ -1,0 +1,20 @@
+package unlam.edu.ar.pb2;
+
+import java.util.ArrayList;
+
+public class Administrador extends Usuario {
+
+	ArrayList<Alarma> alarmasRegistradas;
+	
+	public Administrador(Integer dni, String nombre) {
+		super(dni, nombre);
+		this.alarmasRegistradas =  new ArrayList<Alarma>(); 
+	}
+
+	public Boolean agregarAlarma(Alarma alarma) {
+		
+		
+		
+	}
+
+}

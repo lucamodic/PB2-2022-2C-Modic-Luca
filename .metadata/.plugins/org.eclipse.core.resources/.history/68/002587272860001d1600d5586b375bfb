@@ -1,0 +1,29 @@
+package unlam.edu.ar.pb2;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestingParcial {
+
+	@Test
+	public void queSePuedaRegistrarUnaAlarmaEnlaCentral() {
+		Central central = new Central ("Central");
+		Integer id = 1;
+		Alarma alarma = new Alarma(id, "COD123", "COD321", "Alamrma Master 1");
+		Administrador administrador = new Administrador(44851732, "Luca");
+		administrador.agregarAlarma(alarma, central);
+		assertEquals(1, central.getAlarmasRegistradas().size());
+	}
+	
+	@Test
+	public void queSePuedaAgregarUnUsuarioConfiguradorAUnaAlarma(){
+		Central central = new Central ("Central");
+		Integer id = 1;
+		Configurador configurador = new Configurador(44851732, "Luca");
+		Administrador administrador = new Administrador(44851733, "Mateo");
+		Alarma alarma = new Alarma(id, "COD123", "COD123", "Alamrma Master 1");
+		administrador.agregarUsuario(configurador, central);
+		administrador.agregarUsuarioAUnaAlarma(1, "COD123", "COD123");
+	}
+
+}

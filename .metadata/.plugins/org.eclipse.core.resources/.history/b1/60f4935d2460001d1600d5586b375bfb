@@ -1,0 +1,29 @@
+package unlam.edu.ar.pb2;
+
+import java.util.TreeSet;
+
+public class Administrador extends Usuario {
+
+	private TreeSet<Alarma> alarmasRegistradas;
+
+	
+	public Administrador(Integer dni, String nombre) {
+		super(dni, nombre);
+		this.alarmasRegistradas = new TreeSet<Alarma>();
+
+	}
+
+	public Boolean agregarAlarma(Alarma alarma) {
+		alarmasRegistradas.add(alarma);
+		return true;
+	}
+
+	public TreeSet<Alarma> getAlarmasRegistradas() {
+		return alarmasRegistradas;
+	}
+
+	public void setAlarmasRegistradas(TreeSet<Alarma> alarmasRegistradas) {
+		this.alarmasRegistradas = alarmasRegistradas;
+	}
+
+}

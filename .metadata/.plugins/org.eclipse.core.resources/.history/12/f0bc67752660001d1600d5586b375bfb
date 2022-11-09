@@ -1,0 +1,16 @@
+package unlam.edu.ar.pb2;
+
+import java.util.TreeSet;
+
+public class Central {
+
+	private String nombre;
+
+	public Central(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	
+	
+}

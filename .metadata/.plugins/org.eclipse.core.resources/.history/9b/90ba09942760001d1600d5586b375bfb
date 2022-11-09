@@ -1,0 +1,26 @@
+package unlam.edu.ar.pb2;
+
+import java.util.ArrayList;
+
+public class Administrador extends Usuario {
+	private Central central = new Central ("Central");
+	
+	public Administrador(Integer dni, String nombre) {
+		super(dni, nombre);
+	}
+	
+	public Boolean agregarAlarma(Alarma alarma) {
+		central.getAlarmasRegistradas().add(alarma);
+		return true;
+	}
+
+	public Central getCentral() {
+		return central;
+	}
+
+	public Boolean agregarUsuario(Usuario usuario) {
+		central.getUsuarios().add(usuario);
+		return true;
+	}
+
+}

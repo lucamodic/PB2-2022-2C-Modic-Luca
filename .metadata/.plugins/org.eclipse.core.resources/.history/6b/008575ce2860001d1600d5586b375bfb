@@ -1,0 +1,52 @@
+package unlam.edu.ar.pb2;
+
+import java.util.ArrayList;
+
+public class Central {
+
+	private String nombre;
+	private ArrayList<Alarma> alarmasRegistradas;
+	private ArrayList<Usuario> usuarios;
+	
+	public Central(String nombre) {
+		this.nombre = nombre;
+		this.alarmasRegistradas = new ArrayList<Alarma>();
+		this.usuarios = new ArrayList<Usuario>();
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public ArrayList<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(ArrayList<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	public ArrayList<Alarma> getAlarmasRegistradas() {
+		return alarmasRegistradas;
+	}
+
+	public void setAlarmasRegistradas(ArrayList<Alarma> alarmasRegistradas) {
+		this.alarmasRegistradas = alarmasRegistradas;
+	}
+
+	public Boolean buscarAlarma(int idAlarma, String codigoConfiguracionAlarma) {
+		for(Alarma alarma : alarmasRegistradas){
+			if (alarma.getId() == idAlarma && alarma.getCodigoDeConfiguracion() == codigoConfiguracionAlarma){
+				return true;
+			}
+		}
+		throw new AlarmaNoRegistrada("La alarma no esta registrada");
+	}
+
+	
+	
+}
